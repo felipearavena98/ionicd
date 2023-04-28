@@ -1,17 +1,22 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Tab 1
+      Scanner Elements
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 1</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content [style.--background]="inProcess ? '#00000000' : '#ffff'">
+  <ion-slides [options]="slideOpts" class="ion-flex-grow">
+    <ion-slide>
+      <ion-button (click)="startScan()" expand="full" fill="outline" size="large" shape="round" *ngIf="!inProcess">
+        <ion-icon name="scan" slot="start"></ion-icon>
+        Escanear código
+      </ion-button>
+    </ion-slide>
 
-  <app-explore-container name="Tab 1 page"></app-explore-container>
+  </ion-slides>
+  <ion-item class="bg-secondary" class="text-center ion-padding">
+    <h2>{{data}}</h2>
+  </ion-item>
 </ion-content>

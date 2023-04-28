@@ -1,17 +1,28 @@
-<ion-header [translucent]="true">
+<ion-header>
   <ion-toolbar>
     <ion-title>
-      Tab 3
+      Escáner de cédula
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 3</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content>
+  <canvas #canvas style="display:none;"></canvas>
+  <div id="cameraPreview" class="cameraPreview">
+    <div *ngIf="cameraActive">
+      <ion-button (click)="stopCamera()" expand="block" id="close">
+        <ion-icon name="close-circle" slot="icon-only"></ion-icon>
+      </ion-button>
+      <ion-button (click)="captureImage()" expand="block" id="capture">
+        <ion-icon name="camera" slot="icon-only"></ion-icon>
+      </ion-button>
+      <ion-button (click)="flipCamera()" expand="block" id="flip">
+        <ion-icon name="camera-reverse" slot="icon-only"></ion-icon>
+      </ion-button>
+    </div>
+  </div>
 
-  <app-explore-container name="Tab 3 page"></app-explore-container>
+  <ion-img [src]="image" *ngIf="image && !cameraActive"></ion-img>
+  <ion-button (click)="openCamera()" expand="full" *ngIf="!cameraActive">Open</ion-button>
+
 </ion-content>

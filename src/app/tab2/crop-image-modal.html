@@ -1,0 +1,15 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-title>Recortar imagen</ion-title>
+        <ion-buttons slot="end">
+            <ion-button (click)="cancel()">Cancelar</ion-button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <div class="image-container">
+        <img #image [src]="imageBase64" />
+    </div>
+    <ion-button expand="block" (click)="cropAndClose()">Recortar y continuar</ion-button>
+</ion-content>
